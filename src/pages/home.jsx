@@ -1,21 +1,21 @@
-import icon from "../assets/1364063978.svg";
-import icon1 from "../assets/vc1.svg";
-import icon2 from "../assets/vc2.svg";
-import icon3 from "../assets/svg3.svg";
-import flower from "../assets/flowers.svg";
+import React, { useEffect, useState } from "react";
 const Home = () => {
-  return (
-    <div className="home">
-      <div className="up">
-        <img src={icon} alt="bg-sun" className="svg-img" />
-      </div>
-      <div className="down">
-        <img src={icon1} alt="bg1" /> <img src={icon2} alt="bg2" />
-        <img src={flower} alt="flower" className="flower"/>
-        <img src={icon3} alt="bg3" />{" "}
-      </div>
-    </div>
-  );
+  const [formattedTime, setFormattedTime] = useState("");
+  useEffect(() => {
+    const updateFormattedTime = () => {
+      const options = {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      };
+      const currentTime = new Date().toLocaleString(undefined, options);
+      setFormattedTime(currentTime);
+    };
+    const intervalId = setInterval(updateFormattedTime, 1000);
+    updateFormattedTime();
+    return () => clearInterval(intervalId);
+  }, []);
+  return <React.Fragment>{formattedTime}n</React.Fragment>;
 };
 
 export default Home;
