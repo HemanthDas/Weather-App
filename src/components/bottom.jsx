@@ -1,5 +1,5 @@
 const Bottom = () => {
-  return <div id="bottom-body">Bottom</div>;
+  return <div id="bottom-body"></div>;
 };
 
 export default Bottom;
