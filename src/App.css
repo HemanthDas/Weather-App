@@ -1,12 +1,36 @@
 * {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+
 body {
   height: 100vh;
   overflow-x: hidden;
   position: relative;
   transition: background-color 5s ease-in-out;
   background-color: black;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+#top-body {
+  height: 30%;
+}
+
+#bottom-body {
+  background: url("/images/back.svg") no-repeat;
+  background-size: cover;
+  height: 70%;
+}
+
+@media screen and (max-width: 768px) {
+  #bottom-body {
+    background-position: center;
+  }
 }
