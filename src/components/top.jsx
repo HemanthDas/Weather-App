@@ -3,18 +3,18 @@ import { useEffect } from "react";
 const Top = () => {
   useEffect(() => {
     const keyframes = [
-      { left: "40%", bottom: "5%" },
-      { left: "50%", bottom: "0%" },
-      { left: "60%", bottom: "-8%" },
-      { left: "70%", bottom: "-5%" },
+      { left: "40%", bottom: "30%" },
+      { left: "50%", bottom: "25%" },
+      { left: "60%", bottom: "20%" },
+      { left: "70%", bottom: "15%" },
       { left: "90%", bottom: "-20%" },
       { left: "100%", bottom: "-50%" },
       { left: "-10%", bottom: "-50%" },
-      { left: "0%", bottom: "-20%" },
-      { left: "10%", bottom: "-5%" },
-      { left: "20%", bottom: "-8%" },
-      { left: "30%", bottom: "0%" },
-      { left: "40%", bottom: "5%" },
+      { left: "0%", bottom: "10%" },
+      { left: "10%", bottom: "20%" },
+      { left: "20%", bottom: "24%" },
+      { left: "30%", bottom: "26%" },
+      { left: "35%", bottom: "28%" },
     ];
     const hour = new Date().getHours();
     const sun = document.getElementById("sun");
