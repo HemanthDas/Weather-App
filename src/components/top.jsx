@@ -28,13 +28,13 @@ const Top = () => {
       rain.style.display = "none";
     }
     if (hour >= 6 && hour < 18) {
-      body.style.backgroundColor = "rgb(239 255 135)";
+      body.style.backgroundColor = "#F6FFB9";
       sun.src = "/images/sun.svg";
       bottom.style.filter = "brightness(1)";
     } else {
       bottom.style.filter = "brightness(0.5)";
       body.style.backgroundColor = "#000000";
-      sun.style.filter = "drop-shadow(0 0 0.75rem #fff)";
+      sun.style.filter = "drop-shadow(0 0 5rem #fff)";
       sun.src = "/images/moon-icon-23653.png";
     }
     const keyframe = keyframes[hour % 12];
