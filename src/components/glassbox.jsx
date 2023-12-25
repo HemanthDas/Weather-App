@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import WeatherForcast from "./weatherforcast";
 import WeatherStream from "./weatherstream";
+import WindInfo from "./windinfo";
 const GlassBox = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -53,7 +54,14 @@ const GlassBox = () => {
             </div>
           </section>
         </article>
-        <WeatherStream main={data.main} />
+        <div id="contain">
+          <WeatherStream main={data.main} />
+          <WindInfo
+            speed={data.wind.speed}
+            deg={data.wind.deg}
+            gust={data.wind.gust}
+          />
+        </div>
         <WeatherForcast
           latitude={cord.latitude}
           longitude={cord.longitude}
