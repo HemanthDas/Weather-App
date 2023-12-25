@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 import CardWeather from "./cardweather";
-
-const WeatherForcast = ({ latitude, longitude }) => {
+import SunRiseSet from "./sunriseset";
+const WeatherForcast = ({ latitude, longitude, rise, set }) => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState([]);
 
@@ -25,16 +25,19 @@ const WeatherForcast = ({ latitude, longitude }) => {
     return <div className="loading">Loading...</div>;
   } else {
     return (
-      <div className="forecast">
-        {data.map((item) => (
-          <CardWeather
-            key={item.dt}
-            time={item.dt_txt}
-            temperature={Math.round(item.main.temp - 273.15)}
-            icon={item.weather[0].icon}
-          />
-        ))}
-      </div>
+      <>
+        <div className="forecast">
+          {data.map((item) => (
+            <CardWeather
+              key={item.dt}
+              time={item.dt_txt}
+              temperature={Math.round(item.main.temp - 273.15)}
+              icon={item.weather[0].icon}
+            />
+          ))}
+        </div>
+        <SunRiseSet rise={rise} set={set} />
+      </>
     );
   }
 };
@@ -42,6 +45,8 @@ const WeatherForcast = ({ latitude, longitude }) => {
 WeatherForcast.propTypes = {
   latitude: PropTypes.number.isRequired,
   longitude: PropTypes.number.isRequired,
+  rise: PropTypes.number.isRequired,
+  set: PropTypes.number.isRequired,
 };
 
 export default WeatherForcast;
