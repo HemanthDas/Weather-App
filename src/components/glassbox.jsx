@@ -1,11 +1,10 @@
 import axios from "axios";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import WeatherForcast from "./weatherforcast";
-
+import WeatherStream from "./weatherstream";
 const GlassBox = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
-  // const [isRain, setIsRain] = useState(false);
   const [cord, setCord] = useState({
     latitude: 0,
     longitude: 0,
@@ -33,33 +32,40 @@ const GlassBox = () => {
       });
     }
   }, []);
-  const cachedData = useMemo(() => data, [data]);
   function completeLoading() {
-    let temp = Math.round(cachedData.main.temp - 273.15);
-    let weatherDescription = cachedData.weather[0].description;
+    let temp = Math.round(data.main.temp - 273.15);
+    let weatherDescription = data.weather[0].description;
     return (
-      <article className="container">
-        <section className="weather">
-          <div className="weather-icon">
+      <>
+        <article className="container">
+          <section className="weather">
             <img
-              src={`http://openweathermap.org/img/wn/${cachedData.weather[0].icon}@2x.png`}
+              src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
               alt="weather-icon"
             />
-          </div>
-          <div className="weather-temp">{temp}°C</div>
-        </section>
-        <section className="location">
-          <div className="location__city">{cachedData.name}</div>
-          <div className="location__country">{cachedData.sys.country}</div>
-        </section>
-        <section className="weather-description">{weatherDescription}</section>
-      </article>
+            <div className="weather-temp">{temp}°C</div>
+          </section>
+          <section className="down">
+            <div>{weatherDescription}</div>
+            <div className="location">
+              <div>{data.name}-</div>
+              <div>{data.sys.country}</div>
+            </div>
+          </section>
+        </article>
+        <WeatherStream main={data.main} />
+        <WeatherForcast
+          latitude={cord.latitude}
+          longitude={cord.longitude}
+          rise={data.sys.sunrise}
+          set={data.sys.sunset}
+        />
+      </>
     );
   }
   return (
     <main id="glassbox">
       {loading ? <div className="loading">Loading...</div> : completeLoading()}
-      <WeatherForcast latitude={cord.latitude} longitude={cord.longitude} />
     </main>
   );
 };
