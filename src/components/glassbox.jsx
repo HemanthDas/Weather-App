@@ -39,10 +39,6 @@ const GlassBox = () => {
       <>
         <article className="container">
           <section className="weather">
-            <img
-              src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-              alt="weather-icon"
-            />
             <div className="weather-temp">{temp}°C</div>
           </section>
           <section className="down">
