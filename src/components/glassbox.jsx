@@ -2,7 +2,6 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import WeatherForcast from "./weatherforcast";
 import WeatherStream from "./weatherstream";
-import WindInfo from "./windinfo";
 const GlassBox = () => {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
@@ -40,10 +39,6 @@ const GlassBox = () => {
       <>
         <article className="container">
           <section className="weather">
-            <img
-              src={`http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`}
-              alt="weather-icon"
-            />
             <div className="weather-temp">{temp}°C</div>
           </section>
           <section className="down">
@@ -54,14 +49,7 @@ const GlassBox = () => {
             </div>
           </section>
         </article>
-        <div id="contain">
-          <WeatherStream main={data.main} />
-          <WindInfo
-            speed={data.wind.speed}
-            deg={data.wind.deg}
-            gust={data.wind.gust}
-          />
-        </div>
+        <WeatherStream main={data.main} />
         <WeatherForcast
           latitude={cord.latitude}
           longitude={cord.longitude}
