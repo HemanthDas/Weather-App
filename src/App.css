@@ -151,6 +151,7 @@ body {
     overflow-x: auto;
     display: flex;
     border-radius: 20px;
+    margin: 10px;
     .card {
       font-size: 1rem;
       min-width: fit-content;
@@ -170,6 +171,7 @@ body {
   justify-content: space-around;
   & > div {
     display: inherit;
+    margin: 10px;
     gap: 10px;
   }
 }
@@ -181,8 +183,10 @@ body {
   width: 100%;
   font-weight: 600;
   flex-wrap: wrap;
-  & > * {
-    margin: 10px;
+  & > div {
+    border-radius: 30px;
+    padding: 1vmin;
+    margin: 1vmin;
   }
 }
 
