@@ -1,3 +1,4 @@
+import React from "react";
 import Rain from "../components/rain";
 import Top from "../components/top";
 import Bottom from "../components/bottom";

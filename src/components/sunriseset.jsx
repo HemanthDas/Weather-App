@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 const SunRiseSet = ({ rise, set }) => {
   const riseTime = new Date(rise * 1000).toLocaleTimeString("en-US", {

@@ -1,3 +1,4 @@
+import React from "react";
 import PropTypes from "prop-types";
 const CardWeather = ({ time, temperature, icon }) => {
   const timestamp = new Date(time);
