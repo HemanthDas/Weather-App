@@ -16,7 +16,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Install Dependencies
         run: npm install
@@ -48,4 +48,3 @@ jobs:
           echo "Deployment successful!"
           echo "VITE_API_ID=${{ secrets.VITE_API_ID }}"
           echo "GitHub Token: ${{ secrets.GITHUB_TOKEN }}"
-        if: always()

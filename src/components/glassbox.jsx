@@ -22,7 +22,7 @@ const GlassBox = () => {
             `https://api.openweathermap.org/data/2.5/weather?lat=${
               position.coords.latitude
             }&lon=${position.coords.longitude}&appid=${
-              process.env.VITE_API_ID
+              import.meta.env.VITE_API_ID
             }`
           );
           setData(response.data);
