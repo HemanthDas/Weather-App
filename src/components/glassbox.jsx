@@ -21,9 +21,9 @@ const GlassBox = () => {
           const response = await axios.get(
             `https://api.openweathermap.org/data/2.5/weather?lat=${
               position.coords.latitude
-            }&lon=${position.coords.longitude}&appid=${
-              import.meta.env.VITE_API_ID
-            }`
+            }&lon=${
+              position.coords.longitude
+            }&appid=${"6c21e187ff3c930124f9c022f0c952c6"}`
           );
           setData(response.data);
           setLoading(false);

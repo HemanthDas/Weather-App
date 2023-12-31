@@ -10,9 +10,7 @@ const WeatherForcast = ({ latitude, longitude, rise, set }) => {
   useEffect(() => {
     axios
       .get(
-        `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${
-          import.meta.env.VITE_API_ID
-        }`
+        `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&appid=${"6c21e187ff3c930124f9c022f0c952c6"}`
       )
       .then((res) => {
         if (res.status === 200) {
