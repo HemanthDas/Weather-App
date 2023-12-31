@@ -3,11 +3,15 @@ import ReactDOM from "react-dom/client";
 import DashBoard from "./pages/dashboard";
 
 import "./App.css";
-import { HashRouter } from "react-router-dom";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <DashBoard />,
+  },
+]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HashRouter>
-      <DashBoard />
-    </HashRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
