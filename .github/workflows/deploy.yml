@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -35,7 +35,13 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 14
+
+      - name: Remove .nojekyll file
+        run: rm -f .nojekyll
+
+      - name: Copy build artifacts
+        run: cp -r dist/* ./dist/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -48,4 +54,3 @@ jobs:
           echo "Deployment successful!"
           echo "VITE_API_ID=${{ secrets.VITE_API_ID }}"
           echo "GitHub Token: ${{ secrets.GITHUB_TOKEN }}"
-        if: always()
