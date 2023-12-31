@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -35,7 +35,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -43,9 +43,9 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
 
-      - name: Set up Environment Variables
+      - name: Debug GitHub Pages Deployment
         run: |
-          echo "VITE_API_ID=${{ secrets.VITE_API_ID }}" >> $GITHUB_ENV
-
-      - name: Display Environment Variables
-        run: cat $GITHUB_ENV
+          echo "Deployment successful!"
+          echo "VITE_API_ID=${{ secrets.VITE_API_ID }}"
+          echo "GitHub Token: ${{ secrets.GITHUB_TOKEN }}"
+        if: always()
